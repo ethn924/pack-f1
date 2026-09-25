@@ -1,7 +1,6 @@
 # Extension E2 — le point du meilleur tour (Java)
 
-Depuis 2019, le pilote qui signe le meilleur tour d'une course marque **1 point supplémentaire**,
-mais **uniquement s'il termine dans les dix premiers**. Sinon, personne ne marque ce point.
+Le point du meilleur tour a été introduit en 2019, à condition que son auteur termine dans les dix premiers. Il a ensuite été supprimé à partir de la saison 2025 ; l’extension travaille donc sur un cas historique.
 
 ## Ce qu'il faut ajouter à `Classement.java`
 

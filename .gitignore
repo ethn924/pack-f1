@@ -21,6 +21,13 @@ node_modules/
 .DS_Store
 Thumbs.db
 
+# Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+02-java/bin/
+
 # Fichiers locaux
 .env
 .env.*
