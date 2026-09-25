@@ -1,0 +1,27 @@
+# Environnement virtuel Python
+.venv/
+venv/
+env/
+
+# Caches Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Node.js
+node_modules/
+
+# Fichiers générés
+02-java/out/
+*.class
+
+# Système et éditeurs
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Fichiers locaux
+.env
+.env.*
+!.env.example

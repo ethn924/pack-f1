@@ -1,0 +1,51 @@
+course;pilote;ecurie;position;meilleur_tour;statut
+Bahrein;VERSTAPPEN;Red Bull;1;1:33.614;ARRIVE
+Bahrein;LECLERC;Ferrari;2;1:33.637;ARRIVE
+Bahrein;SAINZ;Ferrari;3;1:34.507;ARRIVE
+Bahrein;NORRIS;McLaren;4;1:32.614;ARRIVE
+Bahrein;RUSSELL;Mercedes;5;1:32.916;ARRIVE
+Bahrein;PIASTRI;McLaren;6;1:33.860;ARRIVE
+Bahrein;ALONSO;Aston Martin;7;1:33.749;ARRIVE
+Bahrein;PEREZ;Red Bull;8;1:34.316;ARRIVE
+Bahrein;STROLL;Aston Martin;9;1:33.727;ARRIVE
+Bahrein;HAMILTON;Mercedes;;;ABANDON
+Djeddah;LECLERC;Ferrari;1;1:36.112;ARRIVE
+Djeddah;VERSTAPPEN;Red Bull;2;1:36.069;ARRIVE
+Djeddah;NORRIS;McLaren;3;1:35.658;ARRIVE
+Djeddah;HAMILTON;Mercedes;4;1:34.791;ARRIVE
+Djeddah;PEREZ;Red Bull;5;1:35.727;ARRIVE
+Djeddah;ALONSO;Aston Martin;6;1:34.468;ARRIVE
+Djeddah;PIASTRI;McLaren;7;1:36.234;ARRIVE
+Djeddah;RUSSELL;Mercedes;8;1:35.316;ARRIVE
+Djeddah;SAINZ;Ferrari;9;1:36.229;ARRIVE
+Djeddah;STROLL;Aston Martin;10;1:35.905;ARRIVE
+Melbourne;NORRIS;McLaren;1;1:34.564;ARRIVE
+Melbourne;VERSTAPPEN;Red Bull;2;1:34.667;ARRIVE
+Melbourne;HAMILTON;Mercedes;3;1:36.488;ARRIVE
+Melbourne;LECLERC;Ferrari;4;1:36.361;ARRIVE
+Melbourne;PIASTRI;McLaren;5;1:36.051;ARRIVE
+Melbourne;SAINZ;Ferrari;6;1:36.537;ARRIVE
+Melbourne;STROLL;Aston Martin;7;1:35.322;ARRIVE
+Melbourne;RUSSELL;Mercedes;8;1:34.229;ARRIVE
+Melbourne;PEREZ;Red Bull;;;ABANDON
+Melbourne;ALONSO;Aston Martin;;;ABANDON
+Suzuka;VERSTAPPEN;Red Bull;1;1:34.415;ARRIVE
+Suzuka;PEREZ;Red Bull;2;1:33.751;ARRIVE
+Suzuka;LECLERC;Ferrari;3;1:34.165;ARRIVE
+Suzuka;RUSSELL;Mercedes;4;1:35.212;ARRIVE
+Suzuka;NORRIS;McLaren;5;1:34.781;ARRIVE
+Suzuka;ALONSO;Aston Martin;6;1:34.465;ARRIVE
+Suzuka;HAMILTON;Mercedes;7;1:33.083;ARRIVE
+Suzuka;SAINZ;Ferrari;8;1:34.798;ARRIVE
+Suzuka;PIASTRI;McLaren;9;1:33.930;ARRIVE
+Suzuka;STROLL;Aston Martin;10;1:34.077;ARRIVE
+Miami;LECLERC;Ferrari;1;1:34.661;ARRIVE
+Miami;NORRIS;McLaren;2;1:34.442;ARRIVE
+Miami;VERSTAPPEN;Red Bull;3;1:33.487;ARRIVE
+Miami;PIASTRI;McLaren;4;1:34.462;ARRIVE
+Miami;SAINZ;Ferrari;5;1:35.072;ARRIVE
+Miami;HAMILTON;Mercedes;6;1:34.697;ARRIVE
+Miami;PEREZ;Red Bull;7;1:34.424;ARRIVE
+Miami;STROLL;Aston Martin;8;1:35.488;ARRIVE
+Miami;ALONSO;Aston Martin;9;1:33.843;ARRIVE
+Miami;RUSSELL;Mercedes;;;ABANDON

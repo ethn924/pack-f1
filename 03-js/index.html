@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Championnat F1 — maillon JavaScript</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #14142b; }
+  h1 { margin-bottom: .2rem; }
+  .sous-titre { color: #555; margin-top: 0; }
+  section { border: 1px solid #ddd; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+  #resultats { list-style: none; padding: 0; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .92rem; }
+  #resultats li { padding: .3rem .4rem; border-bottom: 1px solid #f0f0f0; white-space: pre-wrap; }
+  .ok { color: #116b2f; }
+  .ko { color: #b3261e; }
+  #score { font-size: 1.15rem; font-weight: 700; margin-top: .75rem; }
+  #bac { border: 1px dashed #bbb; border-radius: 6px; padding: .5rem; background: #fafafa; }
+  table { border-collapse: collapse; width: 100%; background: #fff; }
+  th, td { border: 1px solid #ddd; padding: .35rem .6rem; text-align: left; }
+  th { background: #14142b; color: #fff; }
+  tr.podium td { background: #fff7e0; font-weight: 700; }
+  .colonnes { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .colonnes > div { flex: 1 1 380px; }
+  button { font: inherit; padding: .4rem .9rem; border-radius: 6px; border: 1px solid #888; background: #fff; cursor: pointer; }
+  code { background: #f2f2f5; padding: .1rem .3rem; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>🏁 Championnat F1 — maillon JavaScript</h1>
+<p class="sous-titre">Complétez <code>app.js</code>, enregistrez, rechargez cette page.</p>
+
+<section>
+  <h2>Résultats des tests</h2>
+  <button onclick="lancerTests()">↻ Relancer les tests</button>
+  <ul id="resultats"></ul>
+  <p id="score"></p>
+</section>
+
+<section>
+  <h2>Classements de la saison</h2>
+  <div class="colonnes">
+    <div>
+      <h3>Pilotes</h3>
+      <table>
+        <thead><tr><th>#</th><th>Pilote</th><th>Écurie</th><th>Pts</th><th>V</th></tr></thead>
+        <tbody id="corps-pilotes"></tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Écuries</h3>
+      <table>
+        <thead><tr><th>#</th><th>Écurie</th><th></th><th>Pts</th><th>V</th></tr></thead>
+        <tbody id="corps-ecuries"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Zone de test</h2>
+  <div id="bac"></div>
+</section>
+
+<script src="donnees.js"></script>
+<script src="app.js"></script>
+<script src="tests.js"></script>
+</body>
+</html>
