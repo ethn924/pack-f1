@@ -1,6 +1,6 @@
 # Projet F1 — partie Python
 
-Au début, je ne comprenais pas comment convertir le temps ni lire le CSV. J’ai fait plusieurs erreurs avant de terminer les trois fonctions Python et l’écriture du contrat.
+Au début, je ne comprenais pas comment convertir le temps ni lire le CSV. J’ai fait plusieurs erreurs avant de terminer les trois fonctions Python et l’écriture du contrat. Je documente ici seulement la partie Python, qui est terminée pour le moment.
 
 ## Mes exercices
 
