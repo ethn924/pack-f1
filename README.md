@@ -1,48 +1,120 @@
-# Projet F1 — suivi de mon travail
+# Projet F1
 
-Ce dépôt contient le projet F1 en Python, Java et JavaScript. Le README sert de journal de bord : il explique ce que j’ai terminé, ce qui reste en cours et les difficultés rencontrées.
+Ce dépôt montre une chaîne de traitement de données de F1 avec trois langages. Le CSV brut est nettoyé en Python, les classements sont calculés en Java, puis affichés dans une page web.
 
-## État actuel
+Le guide complet des notions est ici : [GUIDE_NOTIONS_F1.pdf](GUIDE_NOTIONS_F1.pdf).
 
-| Maillon | État | Test |
+## Avancement
+
+| Étape | État | Détail |
 |---|---|---|
-| Python | Terminé | 4/4 |
-| Java | En cours | 2/5 |
-| JavaScript | Terminé | 5/5 |
+| Python | Terminé | 4 tests sur 4 |
+| Java | En cours | 2 tests sur 5 |
+| JavaScript | Code écrit | 5 tests à lancer dans le navigateur |
+
+En Java, deux fonctions ne sont pas finies : `classementEcuries` et `positionMoyenne`. Les tests 3 et 4 échouent à cause d'elles. Le test 5 les utilise aussi, donc il échoue également. Cela fait trois tests rouges pour deux fonctions manquantes : le score est bien 2/5, pas 3/5.
+
+## La chaîne
+
+```text
+donnees/resultats.csv
+        ↓ Python : lecture et nettoyage
+02-java/courses_propres.csv
+        ↓ Java : calcul et tri
+03-js/donnees.js
+        ↓ JavaScript : affichage
+page de classements
+```
+
+`courses_propres.csv` et `donnees.js` sont des contrats : les colonnes et les noms de champs doivent rester exactement les mêmes d'une étape à l'autre.
 
 ## Python
 
-### Conversion du temps
+Ce que j'ai fait :
 
-J’ai d’abord eu du mal à comprendre le calcul et à utiliser `split`, `float` et `round`. J’ai aussi oublié plusieurs fois à quoi servait `strip`. J’ai surtout retenu qu’il faut séparer les minutes et les secondes avec `split`, puis convertir chaque partie avec `float`.
+- `temps_en_secondes` transforme `1:33.996` en `93.996`. Je sépare sur `:`, je convertis les deux parties en nombres, puis j'ajoute `minutes * 60 + secondes`.
+- `lire_resultats` saute l'en-tête, découpe chaque ligne sur `;` et renvoie une liste de dictionnaires. Un abandon devient la position 0 et un temps vide.
+- `ecrire_courses_propres` réécrit l'en-tête du contrat, garde l'ordre reçu et écrit le temps avec trois décimales.
 
-La fonction transforme maintenant `1:33.996` en `93.996`. Elle renvoie aussi `None` lorsque le temps est vide ou illisible.
+Difficultés :
 
-### Lecture du fichier CSV
+- oublier de sauter la première ligne du CSV ;
+- utiliser la virgule au lieu du point-virgule ;
+- écrire `None` dans le fichier au lieu de laisser la cellule vide ;
+- se tromper sur l'indentation.
 
-La partie la plus difficile pour moi a été de comprendre les indentations, le découpage des colonnes et l’ajout des résultats dans une liste. J’ai d’abord oublié de sauter l’en-tête et j’ai mélangé la lecture du fichier avec son écriture.
+Ma logique : une fonction par responsabilité. Une convertit un temps, une lit, une écrit. Comme ça, si un test casse, je sais tout de suite quelle partie regarder.
 
-La fonction `lire_resultats` lit maintenant le fichier brut, enlève l’en-tête et renvoie une liste de dictionnaires. La troisième fonction écrit le fichier attendu par le maillon Java avec trois décimales pour les temps.
-
-Les quatre tests Python passent. La cellule de production a aussi généré les 50 lignes de `02-java/courses_propres.csv`.
+Résultat : 4/4.
 
 ## Java
 
-J’ai commencé `Classement.java` et validé le barème ainsi que le classement des pilotes. Le test du petit jeu et le contrôle de quelques données de la saison passent.
+Ce que j'ai fait :
 
-Il reste deux fonctions à terminer :
+- `pointsPourPosition` utilise le tableau du barème et renvoie 0 pour un abandon ou une position au-delà de la 10e.
+- `classementPilotes` regroupe les lignes par pilote, additionne les points, compte les victoires et les deuxièmes places, puis trie sur quatre critères : points, victoires, deuxièmes places, nom.
 
-- `classementEcuries` ;
-- `positionMoyenne`.
+Ce qui reste :
 
-Le test Java est donc actuellement à **2/5**. Je préfère terminer ces fonctions plutôt que pousser un résultat incomplet dans la chaîne complète.
+- `classementEcuries` doit additionner les statistiques des pilotes d'une même écurie.
+- `positionMoyenne` doit faire la moyenne des positions terminées, sans compter les abandons.
+
+Difficultés :
+
+- confondre la position 1 avec l'index 0 du tableau ;
+- comparer des objets au lieu de comparer des nombres ;
+- oublier un critère de départage quand deux pilotes ont les mêmes points ;
+- compter un abandon dans une moyenne de positions.
+
+Ma logique : j'ai commencé par le barème, puis par le classement des pilotes, parce que tout le reste s'appuie dessus. Pour le tri, je compare d'abord les points et je ne regarde les autres critères qu'en cas d'égalité.
+
+Résultat : 2/5, deux fonctions encore à finir.
 
 ## JavaScript
 
-J’ai terminé les trois fonctions de `03-js/app.js` :
+Ce que j'ai fait :
 
-- `trierParPoints` trie une copie de la liste sans modifier la liste reçue ;
-- `remplirTableau` recrée les lignes du tableau ;
-- `marquerPodium` ajoute la classe CSS aux trois premières lignes et la retire des suivantes.
+- `trierParPoints` trie une copie de la liste pour ne pas modifier les données reçues. À points égaux, le pilote avec le plus de victoires passe devant.
+- `remplirTableau` vide le tableau puis crée une ligne et cinq cellules par entrée.
+- `marquerPodium` met la classe `podium` sur les trois premières lignes et la retire des autres.
 
-Les cinq tests JavaScript passent. J’ai gardé quelques commentaires sur les choix importants, sans réexpliquer chaque ligne du code.
+Difficultés :
+
+- oublier que `sort()` modifie la liste d'origine ;
+- trier des nombres sans comparateur ;
+- oublier de vider le tableau avant de le remplir à nouveau ;
+- confondre une valeur JavaScript et un élément HTML.
+
+Ma logique : trois petites fonctions, chacune avec un seul rôle. L'affichage complet les appelle dans le bon ordre.
+
+La syntaxe est vérifiée, mais je ne marque pas 5/5 tant que les tests ne sont pas passés dans le navigateur.
+
+## Lancer le projet
+
+Depuis la racine du dépôt :
+
+- ouvrir `01-python/ingestion.ipynb` dans Jupyter et exécuter les cellules ;
+- pour Java :
+
+```bash
+cd 02-java
+javac -encoding UTF-8 -d out src/*.java
+java "-Dstdout.encoding=UTF-8" -cp out Tests
+java "-Dstdout.encoding=UTF-8" -cp out Main
+```
+
+- ouvrir `03-js/index.html` dans un navigateur : les tests se lancent au chargement.
+
+## Extensions
+
+- E1 : nettoyer des données sales (casse, accents, doublons, virgules).
+- E2 : ajouter le point du meilleur tour.
+- E3 : filtrer par écurie et trier les colonnes au clic.
+- E4 : lancer toute la chaîne en une commande.
+
+## Ce que je retiens
+
+- un format de fichier clair évite beaucoup d'erreurs entre deux langages ;
+- une fonction courte est plus facile à tester ;
+- un test qui échoue donne souvent l'indice le plus utile ;
+- mieux vaut annoncer un projet incomplet que le présenter comme fini.

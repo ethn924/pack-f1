@@ -27,6 +27,7 @@ Thumbs.db
 .project
 .settings/
 02-java/bin/
+02-java/.gitignore
 
 # Fichiers locaux
 .env
