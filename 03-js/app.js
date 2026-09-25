@@ -10,6 +10,7 @@
 //    DÉCROISSANTS. La liste reçue ne doit pas être modifiée.
 //    À points égaux, celui qui a le plus de victoires passe devant.
 function trierParPoints(liste) {
+  // sort() modifie la liste reçue : on trie donc une copie.
   return [...liste].sort((pilote1, pilote2) => {
     if (pilote1.points !== pilote2.points) {
       return pilote2.points - pilote1.points;
@@ -25,12 +26,15 @@ function trierParPoints(liste) {
 //    Chaque <tr> porte l'attribut data-nom. Un nouvel appel REMPLACE le contenu.
 function remplirTableau(idCorps, liste) {
   const corps = document.getElementById(idCorps);
+
+  // Un nouveau classement remplace entièrement l'ancien.
   corps.replaceChildren();
 
   for (let i = 0; i < liste.length; i++) {
     const ligne = document.createElement("tr");
     ligne.dataset.nom = liste[i].nom;
 
+    // Le tableau attend toujours les mêmes cinq colonnes.
     const cellules = ["", "", "", "", ""].map(() =>
       document.createElement("td"),
     );
@@ -52,6 +56,7 @@ function marquerPodium(idCorps) {
   const corps = document.getElementById(idCorps);
   const lignes = corps.querySelectorAll("tr");
 
+  // La classe doit suivre le nouvel ordre des lignes.
   for (let i = 0; i < lignes.length; i++) {
     if (i < 3) {
       lignes[i].classList.add("podium");

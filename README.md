@@ -45,4 +45,4 @@ J’ai terminé les trois fonctions de `03-js/app.js` :
 - `remplirTableau` recrée les lignes du tableau ;
 - `marquerPodium` ajoute la classe CSS aux trois premières lignes et la retire des suivantes.
 
-Les cinq tests JavaScript passent. J’ai retiré les commentaires qui réexpliquaient chaque ligne de code : ils alourdissaient le fichier sans préciser les règles importantes.
+Les cinq tests JavaScript passent. J’ai gardé quelques commentaires sur les choix importants, sans réexpliquer chaque ligne du code.
