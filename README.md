@@ -187,13 +187,17 @@ Les tests du notebook sont validés : **4/4**.
 
 ## Partie Java
 
-J’ai commencé `Classement.java`. La fonction `pointsPourPosition` est validée, mais le classement des pilotes n’est pas encore terminé.
+J’ai commencé `Classement.java`. `pointsPourPosition` et `classementPilotes` sont maintenant validés. Je laisse les autres méthodes de côté pour me concentrer sur JavaScript.
 
 ### Test actuel
 
 ```text
 ✅ 1. pointsPourPosition
-❌ 2. classementPilotes (petit jeu)  →  attendu 3, obtenu 0
+✅ 2. classementPilotes (petit jeu)
+❌ 3. classementEcuries
+❌ 4. positionMoyenne
+❌ 5. saison complète
+2 / 5 tests réussis
 ```
 
 ### Code actuel de `02-java/src/Classement.java`
@@ -235,19 +239,59 @@ public class Classement {
 		List<Resultat> resultats = new ArrayList<>();
 
 		for (Ligne ligne : lignes) {
+			boolean existe = false;
+
 			for (Resultat resultat : resultats) {
-				if (ligne.pilote().equals(resultat.nom)) { // Résultat pour ce pilote déjà existant
-					resultat.points += Classement.pointsPourPosition(ligne.position()); // points par rapport à la pos
-					if (ligne.position() == 1) { // Si il est premier c'est qu'il a forcément gagné
+				if (ligne.pilote().equals(resultat.nom)) {
+					existe = true;
+
+					resultat.points += pointsPourPosition(ligne.position());
+
+					if (ligne.position() == 1) {
 						resultat.victoires++;
-					} else { // Si pas de résultat pour le pilote on lui en créé un
-						Resultat resultatNvPilote = new Resultat(ligne.pilote(), ligne.ecurie());
 					}
 
+					if (ligne.position() == 2) {
+						resultat.deuxiemes++;
+					}
+
+					break;
 				}
 			}
 
+			if (!existe) {
+				Resultat resultatPilote = new Resultat(ligne.pilote(), ligne.ecurie());
+
+				resultatPilote.points += pointsPourPosition(ligne.position());
+
+				if (ligne.position() == 1) {
+					resultatPilote.victoires++;
+				}
+
+				if (ligne.position() == 2) {
+					resultatPilote.deuxiemes++;
+				}
+
+				resultats.add(resultatPilote);
+			}
 		}
+
+		resultats.sort((r1, r2) -> {
+			if (r1.points != r2.points) {
+				return Integer.compare(r2.points, r1.points);
+			}
+
+			if (r1.victoires != r2.victoires) {
+				return Integer.compare(r2.victoires, r1.victoires);
+			}
+
+			if (r1.deuxiemes != r2.deuxiemes) {
+				return Integer.compare(r2.deuxiemes, r1.deuxiemes);
+			}
+
+			return r1.nom.compareTo(r2.nom);
+		});
+
 		return resultats;
 	}
 
