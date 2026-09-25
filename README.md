@@ -1,12 +1,26 @@
 # Projet F1 — partie Python
 
-Au début, je ne comprenais pas comment convertir le temps ni lire le CSV. J’ai fait des erreurs avec `strip()`, `float()`, `round()`, l’indentation et `None`. Après plusieurs essais, j’ai terminé les trois fonctions Python et l’écriture du contrat. Ce que je retiens : il faut convertir les données avant de calculer et vérifier les valeurs.
+Au début, je ne comprenais pas comment convertir le temps ni lire le CSV. J’ai fait plusieurs erreurs avant de terminer les trois fonctions Python et l’écriture du contrat.
 
-## Fonctions utilisées
+## Mes exercices
 
-- `temps_en_secondes(texte)` transforme un temps comme `1:33.996` en secondes.
-- `lire_resultats(chemin)` lit le CSV et renvoie une liste de dictionnaires.
-- `ecrire_courses_propres(chemin, lignes)` écrit le fichier du contrat 1.
+### Exercice 1 — Fonction temps en chrono
+
+- **Difficultés :** je ne comprenais pas le calcul, j’oubliais les parenthèses de `strip()` et je ne savais pas quand convertir les minutes et les secondes.
+- **Ce que j’ai retenu :** il faut utiliser `split()`, `float()`, multiplier les minutes par 60 et arrondir avec `round()`.
+- **Résultat :** `1:33.996` devient `93.996` et le test est réussi.
+
+### Exercice 2 — Fonction `lire_resultats`
+
+- **Difficultés :** je ne savais pas lire le CSV, sauter l’en-tête, séparer les colonnes et utiliser un dictionnaire.
+- **Ce que j’ai retenu :** `open()`, `readlines()` et `split(";")` permettent de lire et de découper les données.
+- **Résultat :** la fonction renvoie les résultats sans l’en-tête et le test est réussi.
+
+### Exercice 3 — Fonction `ecrire_courses_propres`
+
+- **Difficultés :** j’ai utilisé `readlines()` alors que je voulais écrire, puis j’ai oublié les `;`, les retours à la ligne et le traitement de `None`.
+- **Ce que j’ai retenu :** `"w"` écrase le fichier, `write()` écrit et `:.3f` écrit un temps avec trois décimales.
+- **Résultat :** le contrat est écrit dans le bon format et le test est réussi.
 
 ## Code Python complet de `01-python/ingestion.ipynb`
 
