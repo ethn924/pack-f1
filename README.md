@@ -1,6 +1,6 @@
-# Projet F1 — partie Python
+# Projet F1 — Python et Java
 
-Au début, je ne comprenais pas comment convertir le temps ni lire le CSV. J’ai fait plusieurs erreurs avant de terminer les trois fonctions Python et l’écriture du contrat. Je documente ici seulement la partie Python, qui est terminée pour le moment.
+Au début, je ne comprenais pas comment convertir le temps ni lire le CSV. J’ai fait plusieurs erreurs avant de terminer les trois fonctions Python et l’écriture du contrat. Je documente ici la partie Python, qui est terminée, et mes premiers essais en Java.
 
 ## Mes exercices
 
@@ -184,3 +184,86 @@ print(f"\n{len(abandons)} abandons :", [l["pilote"] for l in abandons])
 ## Tests
 
 Les tests du notebook sont validés : **4/4**.
+
+## Partie Java
+
+J’ai commencé `Classement.java`. La fonction `pointsPourPosition` est validée, mais le classement des pilotes n’est pas encore terminé.
+
+### Test actuel
+
+```text
+✅ 1. pointsPourPosition
+❌ 2. classementPilotes (petit jeu)  →  attendu 3, obtenu 0
+```
+
+### Code actuel de `02-java/src/Classement.java`
+
+```java
+/* =========================================================================
+   MAILLON 2 — JAVA : le moteur de calcul
+   Complétez les quatre méthodes. Les classes Ligne, Resultat et Chargeur
+   sont fournies : ne les modifiez pas.
+       javac -encoding UTF-8 -d out src/*.java
+       java -Dstdout.encoding=UTF-8 -cp out Tests     (les tests)
+       java -Dstdout.encoding=UTF-8 -cp out Main      (la production)
+   ========================================================================= */
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Classement {
+
+	/** Barème officiel des dix premiers. FOURNI — NE PAS MODIFIER. */
+	public static final int[] BAREME = { 25, 18, 15, 12, 10, 8, 6, 4, 2, 1 };
+
+	// 1. pointsPourPosition(position) : points marqués pour cette position.
+	// 1 -> 25, 2 -> 18, ..., 10 -> 1. Au-delà de la 10e place : 0.
+	// Un abandon vaut la position 0, donc 0 point.
+	public static int pointsPourPosition(int position) {
+		if (position < 1 || position > BAREME.length) {
+			return 0;
+		}
+
+		return BAREME[position - 1];
+
+	}
+
+	// 2. classementPilotes(lignes) : un Resultat par pilote, avec ses points,
+	// ses victoires (position 1) et ses 2e places, trié par :
+	// points décroissants, puis victoires, puis 2e places, puis nom (A→Z).
+	public static List<Resultat> classementPilotes(List<Ligne> lignes) {
+		List<Resultat> resultats = new ArrayList<>();
+
+		for (Ligne ligne : lignes) {
+			for (Resultat resultat : resultats) {
+				if (ligne.pilote().equals(resultat.nom)) { // Résultat pour ce pilote déjà existant
+					resultat.points += Classement.pointsPourPosition(ligne.position()); // points par rapport à la pos
+					if (ligne.position() == 1) { // Si il est premier c'est qu'il a forcément gagné
+						resultat.victoires++;
+					} else { // Si pas de résultat pour le pilote on lui en créé un
+						Resultat resultatNvPilote = new Resultat(ligne.pilote(), ligne.ecurie());
+					}
+
+				}
+			}
+
+		}
+		return resultats;
+	}
+
+	// 3. classementEcuries(pilotes) : additionne les points, victoires et
+	// 2e places des pilotes de chaque écurie. Même ordre de tri.
+	public static List<Resultat> classementEcuries(List<Resultat> pilotes) {
+		// À COMPLÉTER
+		return null;
+	}
+
+	// 4. positionMoyenne(lignes, pilote) : moyenne des positions de ce pilote,
+	// ABANDONS EXCLUS, arrondie à 2 décimales. 0 s'il n'a jamais terminé.
+	// Ex. positions 1, 2 et un abandon -> 1.5
+	public static double positionMoyenne(List<Ligne> lignes, String pilote) {
+		// À COMPLÉTER
+		return 0;
+	}
+}
+```
