@@ -1,5 +1,7 @@
 # Projet F1
 
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Java](https://img.shields.io/badge/Java-ED8B00?logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
+
 Un projet en trois étapes. En Python, je nettoie les données de F1 ; en Java, je calcule les classements ; en JavaScript, je les affiche dans une page web.
 
 ## Où j'en suis
@@ -103,3 +105,7 @@ java -Dstdout.encoding=UTF-8 -cp out Main
 - ce que j'écris doit rester lisible par l'étape d'après : c'est le point qui m'a coûté le plus de temps ;
 - un test rouge signale une consigne que j'ai mal lue, pas une fatalité, et le corriger est plus rapide que de relire mon code au hasard ;
 - la suite pour moi : `classementEcuries` et `positionMoyenne`.
+
+---
+
+Réalisé par **Ethan Lalienne** · [GitHub](https://github.com/ethn924) · [Portfolio](https://ethn924.github.io/Portfolio/)
